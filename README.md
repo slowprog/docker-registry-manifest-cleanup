@@ -23,22 +23,27 @@ After running this, you should do a garbage collect in the registry to free up t
 
 #### For a normal http registry:
 ```
-docker run -it -v <path-to-registry>:/registry -e REGISTRY_URL=<registry-url> mortensrasmussen/docker-registry-manifest-cleanup
+docker run -it -v <path-to-registry>:/registry -e REGISTRY_URL=<registry-url> slowprog/docker-registry-manifest-cleanup
 ```
 
 #### For an https registry with self-signed certificates:
 ```
-docker run -it -v <path-to-registry>:/registry -e REGISTRY_URL=<registry-url> -e CURL_INSECURE=true mortensrasmussen/docker-registry-manifest-cleanup
+docker run -it -v <path-to-registry>:/registry -e REGISTRY_URL=<registry-url> -e CURL_INSECURE=true slowprog/docker-registry-manifest-cleanup
+```
+
+#### For a basic auth:
+```
+docker run -it -v <path-to-registry>:/registry -e REGISTRY_URL=<registry-url> -e REGISTRY_USERNAME=login -e REGISTRY_PASSWORD=pass slowprog/docker-registry-manifest-cleanup
 ```
 
 #### Dry-run
 ```
-docker run -it -v <path-to-registry>:/registry -e REGISTRY_URL=<registry-url> -e DRY_RUN=true mortensrasmussen/docker-registry-manifest-cleanup
+docker run -it -v <path-to-registry>:/registry -e REGISTRY_URL=<registry-url> -e DRY_RUN=true slowprog/docker-registry-manifest-cleanup
 ```
 
 #### Example:
 ```
-docker run -it -v /home/someuser/registry:/registry -e REGISTRY_URL=http://192.168.50.87:5000 mortensrasmussen/docker-registry-manifest-cleanup
+docker run -it -v /home/someuser/registry:/registry -e REGISTRY_URL=http://192.168.50.87:5000 slowprog/docker-registry-manifest-cleanup
 ```
 
 ## License
